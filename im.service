@@ -1,0 +1,25 @@
+#对于CentOS 7.6 将其放于/usr/lib/systemd/system/目录下
+#然后可以通过systemctl管理服务
+[Unit]
+
+Description=im server
+
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+
+
+[Service]
+
+Type=forking
+
+ExecStart=/root/application/start.sh
+
+ExecStop=/root/application/stop.sh
+
+PrivateTmp=true
+
+
+
+[Install]
+
+WantedBy=multi-user.target
